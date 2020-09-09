@@ -246,6 +246,9 @@ function! ale#linter#Define(filetype, linter) abort
 
     " Remove previously defined linters with the same name.
     call filter(s:linters[a:filetype], 'v:val.name isnot# a:linter.name')
+    if l:new_linter == 0
+        return
+    end
     call add(s:linters[a:filetype], l:new_linter)
 endfunction
 
